@@ -1,7 +1,19 @@
+"use client";
+
 import React from "react";
 import CardPayment from "@/app/components/CardPayment";
+import { useState } from "react";
+import MetodePembayaran from "@/app/components/MetodePembayaran";
 
 function Payment() {
+  const [metodePembayaran, setMetodePembayaran] = useState("");
+
+  const handleRadioChange = (e) => {
+    const value = e.target.value;
+    setMetodePembayaran(value);
+    console.log("Metode Pembayran : ", metodePembayaran);
+  };
+
   return (
     <>
       <>
@@ -22,7 +34,7 @@ function Payment() {
                 <div className="collapse-content">
                   <label className="label cursor-pointer">
                     <span className="label-text">DANA</span>
-                    <input type="radio" name="radio-10" className="radio border-black border-4 checked:bg-white" checked />
+                    <input type="radio" name="radio-10" className="radio border-black border-4 checked:bg-white" value="DANA" onChange={handleRadioChange} />
                   </label>
                   <label className="label cursor-pointer">
                     <span className="label-text">ShopeePay</span>
@@ -77,101 +89,41 @@ function Payment() {
                 </div>
               </div>
             </div> */}
+            <h1 className="font-bold text-xl text-black mb-3">Metode Pembayaran</h1>
+            <MetodePembayaran />
 
             {/* END OF METHODE PAYMENT */}
 
-            <div id="accordion-collapse" data-accordion="collapse">
-              <h2 id="accordion-collapse-heading-1">
-                <button
-                  type="button"
-                  class="flex items-center justify-between w-full p-5 font-medium text-left text-gray-500 border border-b-0 border-gray-200 rounded-t-xl focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-800 dark:border-gray-700 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800"
-                  data-accordion-target="#accordion-collapse-body-1"
-                  aria-expanded="true"
-                  aria-controls="accordion-collapse-body-1"
-                >
-                  <span>What is Flowbite?</span>
-                  <svg data-accordion-icon class="w-3 h-3 rotate-180 shrink-0" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
-                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5 5 1 1 5" />
-                  </svg>
-                </button>
-              </h2>
-              <div id="accordion-collapse-body-1" class="hidden" aria-labelledby="accordion-collapse-heading-1">
-                <div class="p-5 border border-b-0 border-gray-200 dark:border-gray-700 dark:bg-gray-900">
-                  <p class="mb-2 text-gray-500 dark:text-gray-400">Flowbite is an open-source library of interactive components built on top of Tailwind CSS including buttons, dropdowns, modals, navbars, and more.</p>
-                  <p class="text-gray-500 dark:text-gray-400">
-                    Check out this guide to learn how to{" "}
-                    <a href="/docs/getting-started/introduction/" class="text-blue-600 dark:text-blue-500 hover:underline">
-                      get started
-                    </a>{" "}
-                    and start developing websites even faster with components on top of Tailwind CSS.
-                  </p>
-                </div>
+            {/* END OF DROPDOWN */}
+
+            {/* DETAIL PEMBAYARAN */}
+            <div className="wrapper-detail-pembayaran mt-7 text-black flex flex-col">
+              <h1 className="font-bold text-xl">Detail Pembayaran</h1>
+              <div className="sub-total font-regular flex text-gray-600 justify-between">
+                <p>Subtotal</p>
+                <p>Rp.150.000</p>
               </div>
-              <h2 id="accordion-collapse-heading-2">
-                <button
-                  type="button"
-                  class="flex items-center justify-between w-full p-5 font-medium text-left text-gray-500 border border-b-0 border-gray-200 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-800 dark:border-gray-700 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800"
-                  data-accordion-target="#accordion-collapse-body-2"
-                  aria-expanded="false"
-                  aria-controls="accordion-collapse-body-2"
-                >
-                  <span>Is there a Figma file available?</span>
-                  <svg data-accordion-icon class="w-3 h-3 rotate-180 shrink-0" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
-                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5 5 1 1 5" />
-                  </svg>
-                </button>
-              </h2>
-              <div id="accordion-collapse-body-2" class="hidden" aria-labelledby="accordion-collapse-heading-2">
-                <div class="p-5 border border-b-0 border-gray-200 dark:border-gray-700">
-                  <p class="mb-2 text-gray-500 dark:text-gray-400">Flowbite is first conceptualized and designed using the Figma software so everything you see in the library has a design equivalent in our Figma file.</p>
-                  <p class="text-gray-500 dark:text-gray-400">
-                    Check out the{" "}
-                    <a href="https://flowbite.com/figma/" class="text-blue-600 dark:text-blue-500 hover:underline">
-                      Figma design system
-                    </a>{" "}
-                    based on the utility classes from Tailwind CSS and components from Flowbite.
-                  </p>
-                </div>
+              <div className="sub-total flex font-regular text-gray-600 justify-between">
+                <p>Biaya Admin</p>
+                <p>Rp.1000</p>
               </div>
-              <h2 id="accordion-collapse-heading-3">
-                <button
-                  type="button"
-                  class="flex items-center justify-between w-full p-5 font-medium text-left text-gray-500 border border-gray-200 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-800 dark:border-gray-700 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800"
-                  data-accordion-target="#accordion-collapse-body-3"
-                  aria-expanded="false"
-                  aria-controls="accordion-collapse-body-3"
-                >
-                  <span>What are the differences between Flowbite and Tailwind UI?</span>
-                  <svg data-accordion-icon class="w-3 h-3 rotate-180 shrink-0" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
-                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5 5 1 1 5" />
-                  </svg>
-                </button>
-              </h2>
-              <div id="accordion-collapse-body-3" class="hidden" aria-labelledby="accordion-collapse-heading-3">
-                <div class="p-5 border border-t-0 border-gray-200 dark:border-gray-700">
-                  <p class="mb-2 text-gray-500 dark:text-gray-400">
-                    The main difference is that the core components from Flowbite are open source under the MIT license, whereas Tailwind UI is a paid product. Another difference is that Flowbite relies on smaller and standalone components,
-                    whereas Tailwind UI offers sections of pages.
-                  </p>
-                  <p class="mb-2 text-gray-500 dark:text-gray-400">However, we actually recommend using both Flowbite, Flowbite Pro, and even Tailwind UI as there is no technical reason stopping you from using the best of two worlds.</p>
-                  <p class="mb-2 text-gray-500 dark:text-gray-400">Learn more about these technologies:</p>
-                  <ul class="pl-5 text-gray-500 list-disc dark:text-gray-400">
-                    <li>
-                      <a href="https://flowbite.com/pro/" class="text-blue-600 dark:text-blue-500 hover:underline">
-                        Flowbite Pro
-                      </a>
-                    </li>
-                    <li>
-                      <a href="https://tailwindui.com/" rel="nofollow" class="text-blue-600 dark:text-blue-500 hover:underline">
-                        Tailwind UI
-                      </a>
-                    </li>
-                  </ul>
-                </div>
+              <div className="sub-total flex font-regular text-gray-600 justify-between">
+                <p>DIscount</p>
+                <p>Rp.0</p>
+              </div>
+              <div className="sub-total flex font-bold justify-between">
+                <p>Total</p>
+                <p>Rp.151.000</p>
               </div>
             </div>
 
-            {/* END OF DROPDOWN */}
+            {/* END OF PEMBAYARAN */}
+
+            <div className="w-full flex justify-end mt-5">
+              <a href="/pages/payment-va">
+                <button className="btn bg-[#81FF7E] border-2 border-[#4CCE49] hover:bg-[#22bb1f] text-black px-7">Bayar</button>
+              </a>
+            </div>
           </div>
         </div>
       </>
