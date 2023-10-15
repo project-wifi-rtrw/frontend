@@ -45,7 +45,7 @@ function Page() {
           <h1 className=" font-extrabold mt-5 text-2xl text-black">ICComp</h1>
           <form className="flex justify-center h-32 flex-col mt-4 w-[80%]">
             <h1 className="text-gray-700 text-xs">Masukan Nomor Whatsapp Anda!</h1>
-            <input type="text" placeholder="Contoh : 081 xxx xxx" className="input input-bordered w-full max-w-xs mb-3 bg-[#EBE9E9] border-2 border-[#666262]" />
+            <input type="text" placeholder="Contoh : 081 xxx xxx" className="input input-bordered text-black w-full max-w-xs mb-3 bg-[#EBE9E9] border-2 border-[#666262]" />
             <div id="buttonLogin" onClick={buttonClicked ? dashboardPage : loginClicked} className={`btn bg-yellow-400 border-none shadow-2xl mx-auto w-[40%] font-bold text-black ${buttonClicked ? 'cursor-pointer' : ''}`}>
               {wasLogin}
             </div>
