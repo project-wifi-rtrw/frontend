@@ -27,68 +27,6 @@ function Payment() {
           <div className="w-screen h-full z-0 bg-white pt-28 px-5 pb-8">
             {/* METODE PEMBAYARAN */}
 
-            {/* <div className="wrapper">
-              <div className="collapse collapse-arrow text-black">
-                <input type="radio" name="my-accordion-2" checked="checked" />
-                <div className="collapse-title text-xl font-medium">E- Wallet</div>
-                <div className="collapse-content">
-                  <label className="label cursor-pointer">
-                    <span className="label-text">DANA</span>
-                    <input type="radio" name="radio-10" className="radio border-black border-4 checked:bg-white" value="DANA" onChange={handleRadioChange} />
-                  </label>
-                  <label className="label cursor-pointer">
-                    <span className="label-text">ShopeePay</span>
-                    <input type="radio" name="radio-10" className="radio border-black border-4 checked:bg-white" checked />
-                  </label>
-                  <label className="label cursor-pointer">
-                    <span className="label-text">Gopay</span>
-                    <input type="radio" name="radio-10" className="radio border-black border-4 checked:bg-white" checked />
-                  </label>
-                  <label className="label cursor-pointer">
-                    <span className="label-text">OVO</span>
-                    <input type="radio" name="radio-10" className="radio border-black border-4 checked:bg-white" checked />
-                  </label>
-                </div>
-              </div>
-              <div className="collapse collapse-arrow text-black">
-                <input type="radio" name="my-accordion-2" />
-                <div className="collapse-title text-xl font-medium">Transfer Bank</div>
-                <div className="collapse-content">
-                  <div className="form-control">
-                    <label className="label cursor-pointer">
-                      <span className="label-text">BCA</span>
-                      <input type="radio" name="radio-10" className="radio border-black border-4 checked:bg-white" checked />
-                    </label>
-                    <label className="label cursor-pointer">
-                      <span className="label-text">BRI</span>
-                      <input type="radio" name="radio-10" className="radio border-black border-4 checked:bg-white" checked />
-                    </label>
-                    <label className="label cursor-pointer">
-                      <span className="label-text">Mandiri</span>
-                      <input type="radio" name="radio-10" className="radio border-black border-4 checked:bg-white" checked />
-                    </label>
-                    <label className="label cursor-pointer">
-                      <span className="label-text">{"Bank Syariah Indonesia (BSI)"}</span>
-                      <input type="radio" name="radio-10" className="radio border-black border-4 checked:bg-white" checked />
-                    </label>
-                  </div>
-                </div>
-              </div>
-              <div className="collapse collapse-arrow text-black">
-                <input type="radio" name="my-accordion-2" />
-                <div className="collapse-title text-xl font-medium">Alfamart / Indomart</div>
-                <div className="collapse-content">
-                  <label className="label cursor-pointer">
-                    <span className="label-text">Indomart</span>
-                    <input type="radio" name="radio-10" className="radio border-black border-4 checked:bg-white" checked />
-                  </label>
-                  <label className="label cursor-pointer">
-                    <span className="label-text">Alfamart</span>
-                    <input type="radio" name="radio-10" className="radio border-black border-4 checked:bg-white" checked />
-                  </label>
-                </div>
-              </div>
-            </div> */}
             <h1 className="font-bold text-xl text-black mb-3">Metode Pembayaran</h1>
             <MetodePembayaran />
 
