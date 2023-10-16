@@ -4,8 +4,48 @@ import Cards from "@/app/components/Cards";
 import History from "@/app/components/History";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPrint, faWrench, faWifi } from "@fortawesome/free-solid-svg-icons";
+import { useCookies } from "react-cookie"
+import axios from "axios";
 
 export default function Home() {
+  const [accessCookie, setAccessCookie, removeAccessCookie] = useCookies(["access"])
+
+  const requestUserInfo = async () =>{
+    try{
+      let response = await axios.get(`${process.env.BACKEND_URL}/userinfo`,{
+        headers:{
+          Authorization: `Bearer ${accessCookie.access}`
+        }
+      })
+      // example success response
+      /*
+      {
+        'status':True,
+        'message':'success',
+        'data':
+        {
+            'firstName':first_name,
+            'lastName':last_name,
+            'usagePlan':usage_plan
+        }
+      }
+      */
+      return response.data
+    }
+    catch(e){
+      // example failed response
+      /*
+      {
+        'status':False,
+        'message':'there was problem with the server!'
+      }
+      */
+      let response = e.response
+      return response.data
+    }
+  };
+
+
   return (
     <>
       <div className="h-screen w-screen flex flex-col relative">

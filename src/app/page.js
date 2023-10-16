@@ -41,18 +41,30 @@ function Page() {
       let response = await axios.post(`${process.env.BACKEND_URL}/login/`,{
         phoneNumber : phoneNumber
       })
-      return {
-        message : response.data.message,
-        status : response.data.status
+      // example success response
+      /*
+      {
+        'message':'token sent successfully!, 
+        please check your whatsapp',
+        'status':True
       }
+      */
+      return response.data
     }
     catch(e){
-      let response = e.response
-      console.log(response)
-      return {
-        message : response.data.message,
-        status : response.data.status
+      // example error response
+      /*
+      {
+        'message':'there was problem with whatsapp service!',
+        'status':False
       }
+      {
+        'message':'user not found!',
+        'status':False
+      }
+      */
+      let response = e.response
+      return response.data
     }
   };
 

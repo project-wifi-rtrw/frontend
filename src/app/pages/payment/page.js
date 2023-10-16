@@ -4,15 +4,119 @@ import React from "react";
 import CardPayment from "@/app/components/CardPayment";
 import { useState } from "react";
 import MetodePembayaran from "@/app/components/MetodePembayaran";
-
+import axios from "axios";
+import { useCookies } from "react-cookie";
 function Payment() {
   const [metodePembayaran, setMetodePembayaran] = useState("");
-
+  const [accessCookie, setAccessCookie] = useCookies(["access"]);
   const handleRadioChange = (e) => {
     const value = e.target.value;
     setMetodePembayaran(value);
     console.log("Metode Pembayran : ", metodePembayaran);
   };
+
+  // request api for get all available payment methods
+  const requestAvailablePayment = async () =>{
+    try {
+      let response = await axios.post(`${process.env.BACKEND_URL}/list-payment/`,{
+        headers:{
+          Authorization: `Bearer ${accessCookie.access}`
+        }
+      })
+      // example response of success
+      /*
+        {
+          'message':'success',
+          'paymentChannelList':[
+            {
+            'id':(id of payment channel),
+            'name':(name of payment channel),
+            'paymentChannel':(code of payment channel),
+            'paymentMethod':(code of payment method),
+            'image':(image url of payment channel)
+            }
+          ],
+          'status':True
+        }
+      */
+      return response.data
+    } catch (e) {
+      // example response of failed
+      /*
+        {
+          'message':'there was problem with the server!',
+          'status':False
+        }
+      */
+      let response = e.response
+      return response.data
+    }
+  }
+
+
+  // request api for create payment transaction
+  const requestCreatePayment = async (month,paymentChannel) =>{
+    try {
+      let response = await axios.post(`${process.env.BACKEND_URL}/create-payment/`,{
+        headers:{
+          Authorization: `Bearer ${accessCookie.access}`
+        },
+        month:month, //example month = 1 (for january)
+        paymentChannel:paymentChannel //paymentChannel dat get from paymentChannelList (paymentChannel) in requestAvailablePayment function
+      })
+      // example response of success
+      /*
+          {
+            'message':'transaction successfully created!',
+            'data':{
+                'transactionId':'transaction id',
+                'paymentNumber':'payment number',
+                'paymentChannel':'payment channel',
+                'expired':'expired date',
+                },
+            'status':True
+          }
+      */
+      return response.data
+      
+    } catch (e) {
+      let response = e.response
+      // example response of failed
+      /*
+        {
+          'message':'transaction failed to create',
+          'status':False
+        }
+      */
+      return response.data
+    }
+  }
+
+  // request api for get payment status
+  const requestPaymentStatus = async (transactionId) =>{
+    try {
+      let response = await axios.get(`${process.env.BACKEND_URL}/check-payment/(transactionId from createpayment function)/`)
+      // example response of success
+      /*
+            {
+                'message':'success',
+                'paymentStatus':'payment status' (possible value : 'pending','success','failed') ,
+                'status':True
+            }
+      */
+      return response.data
+    } catch (e) {
+      let response = e.response
+      // example response of failed
+      /*  
+        {
+          'message':'there was an error with the server',
+          'status':False
+        }
+      */
+      return response.data
+    }
+  }
 
   return (
     <>
