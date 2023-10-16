@@ -38,7 +38,7 @@ function Page() {
   // for api requests
   const loginApiRequests = async () =>{
     try{
-      let response = await axios.post(`${process.env.BACKEND_URL}/login/`,{
+      let response = await axios.post(`https://sqkdpgsl-5001.asse.devtunnels.ms/api/login/`,{
         phoneNumber : phoneNumber
       })
       return {
