@@ -1,6 +1,7 @@
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGlobe } from "@fortawesome/free-solid-svg-icons";
+import Link from "next/link";
 
 function Cards() {
   return (
@@ -28,9 +29,9 @@ function Cards() {
           </div>
 
           <button className="btn bg-yellow-400 px-6 h-10 flex items-center border-none shadow-xl rounded-lg">
-            <a href="/pages/payment">
+            <Link href="/pages/payment">
               <h1 className="font-bold text-2xl text-[#725126]">BAYAR</h1>
-            </a>
+            </Link>
           </button>
         </div>
       </div>
