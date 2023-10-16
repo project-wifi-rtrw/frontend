@@ -5,16 +5,55 @@ import React from "react";
 import Image from "next/image";
 import Home from "./pages/dashboard/page";
 import Link from "next/link";
+import axios from "axios";
 
 function Page() {
   const [isHidden, setIshidden] = useState(true);
   const [wasLogin, setWasLogin] = useState("Login");
   const [buttonClicked, setButtonClicked] = useState(false);
+  const [phoneNumber,setPhoneNumber] = useState("");
+  const [messageStatus,setMessageStatus] = useState("");
+  const [message,setMessage] = useState("");
 
-  const loginClicked = () => {
-    setIshidden(false);
-    setWasLogin("Kirim Ulang");
-    setButtonClicked(true)
+  const loginClicked = async () => {
+    console.log('clicked')
+    if(isDigit()){
+      setIshidden(true);
+      const response = await loginApiRequests();
+      setMessageStatus(response.status);
+      setMessage(response.message);
+      if(response.status){
+        setWasLogin("Kirim Ulang");
+      }
+      setIshidden(false);
+    }
+    // setWasLogin("Kirim Ulang");
+    // setButtonClicked(true)
+  };
+
+  // for phone number validaton min 11 digit and starts with 08
+  const isDigit = () =>{
+    return phoneNumber.match(/^[0-9]+$/) != null && phoneNumber.length >= 11 && phoneNumber.startsWith("08");
+  };
+  // for api requests
+  const loginApiRequests = async () =>{
+    try{
+      let response = await axios.post(`${process.env.BACKEND_URL}/login/`,{
+        phoneNumber : phoneNumber
+      })
+      return {
+        message : response.data.message,
+        status : response.data.status
+      }
+    }
+    catch(e){
+      let response = e.response
+      console.log(response)
+      return {
+        message : response.data.message,
+        status : response.data.status
+      }
+    }
   };
 
   const dashboardPage = (e) => {
@@ -33,8 +72,8 @@ function Page() {
         </div>
         <div className="bg-white h-[50vh] pt-32 px-10">
           <div className={`mt-10 ${isHidden ? "hidden" : ""} `}>
-            <h1 className="font-bold text-lg text-black text-center">Silahkan cek Whatsapp Anda !</h1>
-            <p className="text-center text-black text-xs">Kami telah mengirim link ke nomor whatsapp anda untuk bisa login kedalam aplikasi</p>
+            <h1 className="font-bold text-lg text-black text-center">{messageStatus ? 'Silahkan Check Whatsapp Anda!' : 'Ada Error!'}</h1>
+            <p className="text-center text-black text-xs">{message}</p>
           </div>
           <a href="/">
             <h1 className="text-black mt-10 font-bold text-center text-sm underline underline-offset-1">Butuh Bantuan?</h1>
@@ -45,10 +84,12 @@ function Page() {
           <h1 className=" font-extrabold mt-5 text-2xl text-black">ICComp</h1>
           <form className="flex justify-center h-32 flex-col mt-4 w-[80%]">
             <h1 className="text-gray-700 text-xs">Masukan Nomor Whatsapp Anda!</h1>
-            <input type="text" placeholder="Contoh : 081 xxx xxx" className="input input-bordered text-black w-full max-w-xs mb-3 bg-[#EBE9E9] border-2 border-[#666262]" />
-            <div id="buttonLogin" onClick={buttonClicked ? dashboardPage : loginClicked} className={`btn bg-yellow-400 border-none shadow-2xl mx-auto w-[40%] font-bold text-black ${buttonClicked ? 'cursor-pointer' : ''}`}>
+            <input type="text" placeholder="Contoh : 081 xxx xxx" className="input input-bordered text-black w-full max-w-xs mb-3 bg-[#EBE9E9] border-2 border-[#666262]" value={phoneNumber} onChange={(e) => {
+              setPhoneNumber(e.target.value);
+            }} /> 
+            <button id="buttonLogin" onClick={loginClicked} type={'button'} className={`btn bg-yellow-400 border-none shadow-2xl mx-auto w-[40%] font-bold text-black`}>
               {wasLogin}
-            </div>
+            </button>
             {/* <a href="/"  className="mx-auto btn bg-yellow-400 border-none shadow-2xl w-[40%]  hover:text-white font-bold text-black">
             </a> */}
           </form>
