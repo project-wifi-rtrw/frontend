@@ -20,7 +20,7 @@ function Page() {
         <div className="absolute top-1/2 left-1/2 transform flex items-center flex-col -translate-x-1/2 -translate-y-3/4 bg-[#000000da] p-5 rounded-lg">
           <p className="text-white font-semibold">Behasil disalin</p>
           {/* Tambahkan tombol tutup jika diperlukan */}
-          {/* <button  onClick={closeNotification}>Oke</button> */}
+          <button  onClick={closeNotification}>Oke</button>
         </div>
       </div>
     );

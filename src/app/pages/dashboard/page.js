@@ -20,7 +20,7 @@ export default function Home() {
             </div>
           </div>
         </div>
-        <Cards />
+        <Cards paket={3} />
         <div className="w-screen z-0 bg-white pt-28 px-5 pb-8">
           <History />
 

@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGlobe } from "@fortawesome/free-solid-svg-icons";
 import Link from "next/link";
 
-function Cards() {
+function Cards(props) {
   return (
     <>
       <div className="bg-white shadow-2xl h-48 w-[90%] absolute z-10 top-20 left-5 rounded-2xl px-4 py-6 flex flex-col justify-between">
@@ -12,7 +12,7 @@ function Cards() {
           <div className="flex gap-1 items-center">
             <FontAwesomeIcon icon={faGlobe} className="h-7  text-black" />
             <h1 className="text-black font-extrabold text-4xl">
-              5<span className="text-2xl font-bolc">Mbps</span>
+              {props.paket}<span className="text-2xl font-bolc">Mbps</span>
             </h1>
           </div>
           <p className="text-[#666262]">Aktif sampai dengan 12-03-2023</p>

@@ -19,7 +19,6 @@ function Page() {
 
   const dashboardPage = (e) => {
     if (buttonClicked) {
-      // Jika tombol sudah diklik sebelumnya
       window.location.href = "./pages/dashboard"; // Redirect ke halaman selanjutnya
       console.log("button clicked")
     }
