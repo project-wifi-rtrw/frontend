@@ -79,10 +79,10 @@ function Page() {
             <h1 className="text-black mt-10 font-bold text-center text-sm underline underline-offset-1">Butuh Bantuan?</h1>
           </a>
         </div>
-        <div className="absolute z-20 h-[45vh] w-[80vw] right-9 top-36 shadow-2xl rounded-2xl bg-white flex flex-col pt-5 items-center">
+        <div className="absolute z-20 w-[80vw] py-4 right-8 top-36 shadow-2xl rounded-2xl bg-white flex flex-col pt-5 items-center">
           <img src="https://i.postimg.cc/3RXgjG2w/ICComp.png" alt="iccomp" className="h-24 w-24" />
           <h1 className=" font-extrabold mt-5 text-2xl text-black">ICComp</h1>
-          <form className="flex justify-center h-32 flex-col mt-4 w-[80%]">
+          <form className="flex justify-center items-center h-32 flex-col mt-4 w-[80%]">
             <h1 className="text-gray-700 text-xs">Masukan Nomor Whatsapp Anda!</h1>
             <input type="text" placeholder="Contoh : 081 xxx xxx" className="input input-bordered text-black w-full max-w-xs mb-3 bg-[#EBE9E9] border-2 border-[#666262]" value={phoneNumber} onChange={(e) => {
               setPhoneNumber(e.target.value);
