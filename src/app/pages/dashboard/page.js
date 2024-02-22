@@ -4,6 +4,7 @@ import Cards from "@/app/components/Cards";
 import History from "@/app/components/History";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPrint, faWrench, faWifi } from "@fortawesome/free-solid-svg-icons";
+import Footer from "@/app/components/Footer";
 
 export default function Home() {
   return (
@@ -21,7 +22,7 @@ export default function Home() {
           </div>
         </div>
         <Cards />
-        <div className="w-screen z-0 bg-white pt-28 px-5 pb-8">
+        <div className="w-screen z-0 bg-white pt-28 px-5">
           <History />
 
           {/* IKLAN */}
@@ -48,7 +49,7 @@ export default function Home() {
           {/* END OF IKLAN */}
 
           {/* OUR SERVICES */}
-          <div className="wrapper mt-5 text-black mb-6 relative top-8">
+          <div className="wrapper mt-5 text-black mb-24 relative top-8">
             <h1 className="font-bold text-xl mb-3">Layanan Kami</h1>
             <div className="wrapper flex flex-col gap-3">
               <CardServices icon={faPrint} title={'Cetak Print'} description={'Kami melayani percetakan print bagi anda yang membutuhkan jasa printer'}/>
@@ -57,6 +58,7 @@ export default function Home() {
             </div>
           </div>
         </div>
+        <Footer/>
       </div>
     </>
   );
